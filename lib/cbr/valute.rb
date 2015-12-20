@@ -4,12 +4,12 @@ module Cbr
 
     def initialize(attributes = {})
       attributes.each do |name, value|
-        name = name.downcase
-        if name == 'numcode'
+        case name.downcase
+        when 'numcode'
           @num_code = value
-        elsif name == 'charcode'
+        when 'charcode'
           @char_code = value
-        elsif name == 'value'
+        when 'value'
           @value = value.tr(',', '.').to_f
         else
           send("#{name.downcase}=", value)
