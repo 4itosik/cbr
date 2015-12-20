@@ -17,6 +17,10 @@ module Cbr
       end
     end
 
+    def char_code_for_array
+      char_code.downcase_with_sym
+    end
+
     private
 
     attr_writer :id, :num_code, :char_code, :nominal, :name, :value

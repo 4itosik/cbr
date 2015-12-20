@@ -34,7 +34,17 @@ return all valutes
 
 default ```date = Time.now```.
 
+You can get valute by Char Code, example
 
+```
+  valute = Cbr::ExchangeRate.new.usd
+```
+
+Get list char codes, use
+
+```
+  Cbr::ExchangeRate.new.char_codes
+```
 
 ## Development
 

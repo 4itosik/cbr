@@ -47,7 +47,7 @@ describe Cbr::ExchangeRate do
     expect(exchange_rate.response.body).to eq response
   end
 
-  context 'valutes' do
+  context '#valutes' do
     subject { Cbr::ExchangeRate.new.valutes }
 
     it 'return valutes array' do
@@ -56,6 +56,36 @@ describe Cbr::ExchangeRate do
 
     it 'should return currect values array' do
       expect(subject.map(&:value)).to match_array([50.8180, 38.8356])
+    end
+  end
+
+  context 'char_code return valute' do
+    subject { Cbr::ExchangeRate.new }
+
+    context 'correct char_code' do
+      it 'should return Australian Dollar with value 50,8180' do
+        expect(subject.aud.value).to eq 50.8180
+      end
+
+      it 'should return Australian Dollar' do
+        expect(subject.aud.name).to eq 'Australian Dollar'
+      end
+    end
+
+    context 'in correct char_code' do
+      it 'should return error' do
+        expect { subject.eur.name }.to raise_error { |error|
+          expect(error).to be_a(NoMethodError)
+        }
+      end
+    end
+  end
+
+  context '#char_codes' do
+    subject { Cbr::ExchangeRate.new }
+
+    it 'should return active char codes' do
+      expect(subject.char_codes).to match_array([:aud, :byr])
     end
   end
 end
