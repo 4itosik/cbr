@@ -21,6 +21,10 @@ module Cbr
       char_code.downcase_with_sym
     end
 
+    def rate
+      value / nominal.to_f
+    end
+
     private
 
     attr_writer :id, :num_code, :char_code, :nominal, :name, :value

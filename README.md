@@ -46,6 +46,14 @@ Get list char codes, use
   Cbr::ExchangeRate.new.char_codes
 ```
 
+Use method ```rate``` for Valute instanse, this method return rate for 1 nominal
+
+Full example
+
+```
+  usd_rate = Cbr::ExchangeRate.new.usd.rate
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.

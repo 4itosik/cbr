@@ -70,6 +70,10 @@ describe Cbr::ExchangeRate do
       it 'should return Australian Dollar' do
         expect(subject.aud.name).to eq 'Australian Dollar'
       end
+
+      it 'should return rate for byr' do
+        expect(subject.byr.rate).to eq 0.00388356
+      end
     end
 
     context 'in correct char_code' do
