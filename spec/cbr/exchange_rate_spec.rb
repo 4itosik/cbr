@@ -27,7 +27,7 @@ describe Cbr::ExchangeRate do
   end
 
   context 'with date' do
-    subject { Cbr::ExchangeRate.new('18.12.2015') }
+    subject { Cbr::ExchangeRate.new(date: '18.12.2015') }
 
     it 'should return request date' do
       expect(subject.date).to eq '18.12.2015'
@@ -43,7 +43,7 @@ describe Cbr::ExchangeRate do
   end
 
   it 'should return response' do
-    exchange_rate = Cbr::ExchangeRate.new('18.12.2015')
+    exchange_rate = Cbr::ExchangeRate.new(date: '18.12.2015')
     expect(exchange_rate.response.body).to eq response
   end
 
@@ -90,6 +90,18 @@ describe Cbr::ExchangeRate do
 
     it 'should return active char codes' do
       expect(subject.char_codes).to match_array([:aud, :byr])
+    end
+  end
+
+  context 'en locale' do
+    subject { Cbr::ExchangeRate.new(locale: :en) }
+
+    it 'should return Australian Dollar with value 50,8180' do
+      expect(subject.aud.value).to eq 50.8180
+    end
+
+    it 'should return Australian Dollar' do
+      expect(subject.aud.name).to eq 'Australian Dollar'
     end
   end
 end

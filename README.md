@@ -19,14 +19,16 @@ And then execute:
 ## Usage
 
 ```
-cbr = Cbr::ExchangeRate.new(date)
+cbr = Cbr::ExchangeRate.new(date: date, locale: locale)
 
 valutes = cbr.valutes
 ```
 
 return all valutes
 
-default ```date = Time.now```.
+default ```date = Time.now```, ```locale = :ru```
+
+Support ru and en locale.
 
 You can get valute by Char Code, example
 

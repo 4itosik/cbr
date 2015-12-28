@@ -11,9 +11,12 @@ module Cbr
 
     attr_reader :date, :response
 
-    def initialize(date = Time.now)
+    def initialize(options = {})
+      date = options[:date] || Time.now
       custrom_date = date.class == String ? Date.parse(date) : date
-      response = self.class.get ".asp?date_req=#{custrom_date.strftime('%d.%m.%Y')}"
+      locale = options[:locale] || :ru
+      update_url = locale == :en ? '_eng' : ''
+      response = self.class.get "#{update_url}.asp?date_req=#{custrom_date.strftime('%d.%m.%Y')}"
       @date = response['ValCurs']['Date']
       @response = response
     end
