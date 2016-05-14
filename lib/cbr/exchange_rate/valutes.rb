@@ -12,11 +12,7 @@ module Cbr
       end
 
       def generate_valutes
-        valutes = []
-        response['ValCurs']['Valute'].each do |valute|
-          valutes << Valute.new(valute)
-        end
-        valutes
+        response['ValCurs']['Valute'].map(& -> (valute) { Valute.new(valute) } )
       end
     end
   end
