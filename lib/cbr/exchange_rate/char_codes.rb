@@ -6,13 +6,9 @@ module Cbr
       end
 
       def method_missing(name, *args, &block)
-        if char_codes.include?(name)
-          valutes.each do |valute|
-            return valute if valute.char_code_for_array == name
-          end
-        else
-          super
-        end
+        super unless char_codes.include?(name)
+        
+        valutes.find { |valute| valute.char_code_for_array == name }
       end
     end
   end
