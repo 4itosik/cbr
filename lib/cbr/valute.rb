@@ -18,7 +18,7 @@ module Cbr
     end
 
     def char_code_for_array
-      char_code.downcase_with_sym
+      char_code.downcase.to_sym
     end
 
     def rate

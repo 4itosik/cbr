@@ -7,7 +7,7 @@ module Cbr
 
       def method_missing(name, *args, &block)
         super unless char_codes.include?(name)
-        
+
         valutes.find { |valute| valute.char_code_for_array == name }
       end
     end
