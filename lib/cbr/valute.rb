@@ -2,8 +2,12 @@ module Cbr
   class Valute
     attr_reader :id, :num_code, :char_code, :nominal, :name, :value
 
+    SKIP_ATTRIBUTES = ['vunitrate'].freeze
+
     def initialize(attributes = {})
       attributes.each do |name, value|
+        next if SKIP_ATTRIBUTES.include?(name.downcase)
+
         case name.downcase
         when 'numcode'
           @num_code = value

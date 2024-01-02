@@ -3,12 +3,13 @@ require 'spec_helper'
 describe Cbr::Valute do
   let(:valute) do
     Cbr::Valute.new(
-      id: 'R01010',
-      num_code: '036',
-      char_code: 'TEST',
-      nominal: '100',
-      name: 'TEST VALUTE',
-      value: 500.8
+      "ID" => 'R01010',
+      "NumCode" => '036',
+      "CharCode" => 'TEST',
+      "Nominal" => '100',
+      "Name" => 'TEST VALUTE',
+      "Value" => '500,8',
+      "VunitRate" => '5,008'
     )
   end
 
